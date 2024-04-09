@@ -1,4 +1,4 @@
-import { Container, Heading, Text } from "@chakra-ui/react"
+import { Box, Container, Heading, Text } from "@chakra-ui/react"
 import Head from "next/head"
 import Image from "next/image"
 // import { Inter } from "next/font/google";
@@ -19,7 +19,9 @@ export default function Home() {
         <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
       </Container>
       <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
-        <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
+        <Box py={48}>
+          <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
+        </Box>
       </Container>
       <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
         <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
