@@ -1,6 +1,22 @@
-import { Box, Container, Heading, Text } from "@chakra-ui/react"
+import MainLayout from "@/layout/MainLayout"
+import {
+  Box,
+  Container,
+  Flex,
+  HStack,
+  Heading,
+  Icon,
+  Spacer,
+  Text,
+} from "@chakra-ui/react"
 import Head from "next/head"
 import Image from "next/image"
+import Link from "next/link"
+import { CiMenuBurger } from "react-icons/ci"
+import { FaArrowLeft } from "react-icons/fa"
+import { HiArrowSmallDown } from "react-icons/hi2"
+import { IoMenu } from "react-icons/io5"
+import { RxHamburgerMenu } from "react-icons/rx"
 // import { Inter } from "next/font/google";
 // import styles from "@/styles/Home.module.css";
 
@@ -15,109 +31,40 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
-        <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
-      </Container>
-      <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
-        <Box py={48}>
-          <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
-        </Box>
-      </Container>
-      <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
-        <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
-      </Container>
-      <Container maxW={"full"} minH={"100vh"} bg={"brand.200"}>
-        <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
-      </Container>
-      {/* <main>
-        <div>
-          <p>
-            Get started by editing&nbsp;
-            <code>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{" "}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
-        </div>
-
-        <div>
-          <Image
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
+      <MainLayout bg={"brand.100"} color={"brand.300"}>
+        <HStack h={28}>
+          <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
+            RC
+          </Heading>
+          <Spacer />
+          <Icon as={RxHamburgerMenu} boxSize={"9"} cursor={"pointer"}></Icon>
+        </HStack>
+        <Flex alignItems={"center"} gap={4}>
+          <Text display={"inline"} fontSize={"xl"}>
+            01//04 -{" "}
+            <Text as={"span"} textTransform={"uppercase"}>
+              Scroll
+            </Text>{" "}
+          </Text>
+          <Icon
+            as={HiArrowSmallDown}
+            boxSize={"4"}
+            cursor={"pointer"}
+            _hover={{
+              transition: "all 0.2s ease-out",
+              transform: "rotate(180deg)",
+            }}
           />
-        </div>
-
-        <div>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
-        </div>
-      </main> */}
+        </Flex>
+      </MainLayout>
     </>
   )
+}
+
+// My test text
+{
+  /* <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
+          <Box as={Link} href={"/test"} color={"white"}>
+            TEST
+          </Box> */
 }

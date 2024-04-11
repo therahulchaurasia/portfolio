@@ -1,14 +1,23 @@
-import { extendTheme } from "@chakra-ui/react"
+import { StyleFunctionProps, ThemeConfig, extendTheme } from "@chakra-ui/react"
 import { Raleway } from "next/font/google"
 // 1. Import the extendTheme function
 
-const montserrat = Raleway({
+const raleway = Raleway({
   subsets: ["cyrillic", "latin", "latin-ext", "vietnamese"],
 })
 
 const fonts = {
-  heading: montserrat.style.fontFamily,
-  body: montserrat.style.fontFamily,
+  heading: raleway.style.fontFamily,
+  body: raleway.style.fontFamily,
+}
+
+const styles = {
+  global: (props: StyleFunctionProps) => ({
+    body: {
+      color: "white",
+      bg: "#1A1A1A",
+    },
+  }),
 }
 
 const colors = {
@@ -20,6 +29,7 @@ const colors = {
 }
 
 export const theme = extendTheme({
+  styles,
   colors,
   fonts,
 })
