@@ -7,6 +7,7 @@ import {
   Heading,
   Icon,
   Spacer,
+  Stack,
   Text,
 } from "@chakra-ui/react"
 import Head from "next/head"
@@ -32,7 +33,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout bg={"brand.100"} color={"brand.300"}>
-        <HStack h={28}>
+        <HStack h={28} mb={24}>
           <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
             RC
           </Heading>
@@ -55,6 +56,33 @@ export default function Home() {
               transform: "rotate(180deg)",
             }}
           />
+        </Flex>
+        <Flex flexDirection={"column"}>
+          <Text
+            fontSize={"6xl"}
+            textTransform={"uppercase"}
+            fontWeight={"extrabold"}
+            mx={"auto"}
+            display={"inline-block"}
+          >
+            Versatile
+          </Text>
+          <Text
+            fontSize={"6xl"}
+            textTransform={"uppercase"}
+            fontWeight={"extrabold"}
+            mx={"auto"}
+          >
+            Creative
+          </Text>
+          <Text
+            fontSize={"6xl"}
+            textTransform={"uppercase"}
+            fontWeight={"extrabold"}
+            mx={"auto"}
+          >
+            Visionary
+          </Text>
         </Flex>
       </MainLayout>
     </>
