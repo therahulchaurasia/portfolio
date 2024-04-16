@@ -39,7 +39,7 @@ export default function Home() {
             RC
           </Heading>
           <Spacer />
-          <Icon as={RxHamburgerMenu} boxSize={"9"} cursor={"pointer"}></Icon>
+          <Icon as={RxHamburgerMenu} boxSize={"9"}></Icon>
         </HStack>
         <Flex alignItems={"center"} gap={4} mb={8}>
           <Text display={"inline"} fontSize={"xl"}>
@@ -51,7 +51,6 @@ export default function Home() {
           <Icon
             as={HiArrowSmallDown}
             boxSize={"5"}
-            cursor={"pointer"}
             _hover={{
               transition: "all 0.2s ease-out",
               transform: "rotate(180deg)",
@@ -102,8 +101,14 @@ export default function Home() {
             outline={"none"}
             color={"brand.300"}
             mx={"auto"}
+            cursor={"none"}
+            transition={"all 0.3s"}
+            _hover={{
+              bg: "brand.300",
+              color: "brand.100",
+            }}
           >
-            <Icon as={HiArrowSmallDown} boxSize={"10"} cursor={"pointer"} />
+            <Icon as={HiArrowSmallDown} boxSize={"10"} />
           </Button>
         </Stack>
       </MainLayout>
