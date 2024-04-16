@@ -1,6 +1,7 @@
 import MainLayout from "@/layout/MainLayout"
 import {
   Box,
+  Button,
   Container,
   Flex,
   HStack,
@@ -33,14 +34,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout bg={"brand.100"} color={"brand.300"}>
-        <HStack h={28} mb={24}>
+        <HStack h={28} mb={20}>
           <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
             RC
           </Heading>
           <Spacer />
           <Icon as={RxHamburgerMenu} boxSize={"9"} cursor={"pointer"}></Icon>
         </HStack>
-        <Flex alignItems={"center"} gap={4}>
+        <Flex alignItems={"center"} gap={4} mb={8}>
           <Text display={"inline"} fontSize={"xl"}>
             01//04 -{" "}
             <Text as={"span"} textTransform={"uppercase"}>
@@ -49,7 +50,7 @@ export default function Home() {
           </Text>
           <Icon
             as={HiArrowSmallDown}
-            boxSize={"4"}
+            boxSize={"5"}
             cursor={"pointer"}
             _hover={{
               transition: "all 0.2s ease-out",
@@ -57,33 +58,54 @@ export default function Home() {
             }}
           />
         </Flex>
-        <Flex flexDirection={"column"}>
-          <Text
-            fontSize={"6xl"}
-            textTransform={"uppercase"}
-            fontWeight={"extrabold"}
-            mx={"auto"}
-            display={"inline-block"}
-          >
-            Versatile
+        <Stack spacing={8}>
+          <Flex flexDirection={"column"}>
+            <Text
+              fontSize={"6xl"}
+              textTransform={"uppercase"}
+              fontWeight={"black"}
+              mx={"auto"}
+              display={"inline-block"}
+              mb={-5}
+            >
+              Versatile
+            </Text>
+            <Text
+              fontSize={"6xl"}
+              textTransform={"uppercase"}
+              fontWeight={"black"}
+              mx={"auto"}
+              mb={-5}
+            >
+              Creative
+            </Text>
+            <Text
+              fontSize={"6xl"}
+              textTransform={"uppercase"}
+              fontWeight={"black"}
+              mx={"auto"}
+            >
+              Visionary
+            </Text>
+          </Flex>
+          <Text textAlign={"center"} mx={"auto"} fontSize={"xl"} mb={16}>
+            EXPLORING BOUNDLESS CREATIVITY, I SOLVE PROBLEMS WITH PASSION,
+            FUELED BY DESIGN.
           </Text>
-          <Text
-            fontSize={"6xl"}
-            textTransform={"uppercase"}
-            fontWeight={"extrabold"}
+          <Button
+            border={"3px solid"}
+            borderColor={"brand.300"}
+            bg={"transparent"}
+            rounded={"full"}
+            h={32}
+            w={32}
+            outline={"none"}
+            color={"brand.300"}
             mx={"auto"}
           >
-            Creative
-          </Text>
-          <Text
-            fontSize={"6xl"}
-            textTransform={"uppercase"}
-            fontWeight={"extrabold"}
-            mx={"auto"}
-          >
-            Visionary
-          </Text>
-        </Flex>
+            <Icon as={HiArrowSmallDown} boxSize={"10"} cursor={"pointer"} />
+          </Button>
+        </Stack>
       </MainLayout>
     </>
   )
