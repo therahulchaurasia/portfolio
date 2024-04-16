@@ -2,7 +2,7 @@ import { Container, ContainerProps } from "@chakra-ui/react"
 import React from "react"
 
 interface Props extends Omit<ContainerProps, "children"> {
-  children: React.ReactNode
+  children?: React.ReactNode
   as?: React.ElementType
 }
 

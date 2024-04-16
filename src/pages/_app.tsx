@@ -11,6 +11,7 @@ import { AnimatePresence, isValidMotionProp, motion } from "framer-motion"
 import type { AppProps } from "next/app"
 import { Montserrat } from "next/font/google"
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 const ChakraBox = chakra(motion.div, {
   /**
@@ -25,7 +26,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ChakraProvider theme={theme}>
-        <AnimatePresence mode="wait">
+        {/* <AnimatePresence mode="wait">
           <ChakraBox
             key={router.route}
             transition={{
@@ -45,11 +46,58 @@ export default function App({ Component, pageProps }: AppProps) {
               background: "black",
               clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
             }}
-          >
-            <Component {...pageProps} />
-          </ChakraBox>
-        </AnimatePresence>
+            // cursor={"none"}
+          > */}
+        <CustomMouse>
+          <Component {...pageProps} />
+        </CustomMouse>
+        {/* </ChakraBox>
+        </AnimatePresence> */}
       </ChakraProvider>
+    </>
+  )
+}
+
+const CustomMouse = ({ children }: { children: React.ReactNode }) => {
+  const [mousePosition, setMousePosition] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  useEffect(() => {
+    const mouseMove = (e: any) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      })
+    }
+    window.addEventListener("mousemove", mouseMove)
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMove)
+    }
+  }, [])
+  const variants = {
+    default: {
+      x: mousePosition.x - 6,
+      y: mousePosition.y - 6,
+    },
+  }
+  return (
+    <>
+      <Box
+        as={motion.div}
+        h={6}
+        w={6}
+        bg={"brand.300"}
+        position={"fixed"}
+        top={0}
+        left={0}
+        rounded={"full"}
+        variants={variants}
+        animate="default"
+      ></Box>
+      {children}
     </>
   )
 }

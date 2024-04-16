@@ -34,7 +34,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <MainLayout bg={"brand.100"} color={"brand.300"}>
-        <HStack h={28} mb={20}>
+        {/* <HStack h={28} mb={20}>
           <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
             RC
           </Heading>
@@ -105,7 +105,7 @@ export default function Home() {
           >
             <Icon as={HiArrowSmallDown} boxSize={"10"} cursor={"pointer"} />
           </Button>
-        </Stack>
+        </Stack> */}
       </MainLayout>
     </>
   )
