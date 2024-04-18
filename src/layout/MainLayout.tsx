@@ -9,7 +9,7 @@ interface Props extends Omit<ContainerProps, "children"> {
 export default function MainLayout({ children, ...props }: Props) {
   return (
     <>
-      <Container width={"100vw"} h={"100vh"} px={8} mx={"auto"} {...props}>
+      <Container w={"full"} minH={"100vh"} px={8} mx={"auto"} {...props}>
         {children}
       </Container>
     </>
