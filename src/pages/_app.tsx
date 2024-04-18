@@ -7,7 +7,12 @@ import {
   extendTheme,
   shouldForwardProp,
 } from "@chakra-ui/react"
-import { AnimatePresence, isValidMotionProp, motion } from "framer-motion"
+import {
+  AnimatePresence,
+  isValidMotionProp,
+  motion,
+  useMotionTemplate,
+} from "framer-motion"
 import type { AppProps } from "next/app"
 import { Montserrat } from "next/font/google"
 import { useRouter } from "next/router"
@@ -21,6 +26,8 @@ const ChakraBox = chakra(motion.div, {
     isValidMotionProp(prop) || shouldForwardProp(prop),
 })
 
+const MotionBox = motion(chakra.div)
+
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
   return (
@@ -30,7 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ChakraBox
             key={router.route}
             transition={{
-              duration: "0.5",
+              duration: "0.25",
             }}
             initial={{
               background: "black",
@@ -46,13 +53,12 @@ export default function App({ Component, pageProps }: AppProps) {
               background: "black",
               clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
             }}
-            // cursor={"none"}
-          > */}
-        <CustomMouse>
-          <Component {...pageProps} />
-        </CustomMouse>
-        {/* </ChakraBox>
-        </AnimatePresence> */}
+          >
+            <CustomMouse>
+              <Component {...pageProps} />
+            </CustomMouse>
+          </ChakraBox>
+        </AnimatePresence>
       </ChakraProvider>
     </>
   )
@@ -64,11 +70,13 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
     y: 0,
   })
 
+  const mouseMove = useMotionTemplate`translate3d(${mousePosition.x}px, ${mousePosition.y}px, 0)`
+
   useEffect(() => {
     const mouseMove = (e: any) => {
       setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
+        x: e.clientX - 2,
+        y: e.clientY - 2,
       })
     }
     window.addEventListener("mousemove", mouseMove)
@@ -77,15 +85,10 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
       window.removeEventListener("mousemove", mouseMove)
     }
   }, [])
-  const variants = {
-    default: {
-      x: mousePosition.x - 6,
-      y: mousePosition.y - 6,
-    },
-  }
+
   return (
     <>
-      <Box
+      <MotionBox
         as={motion.div}
         h={6}
         w={6}
@@ -94,9 +97,11 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
         top={0}
         left={0}
         rounded={"full"}
-        variants={variants}
-        animate="default"
-      ></Box>
+        style={{
+          transform: mouseMove,
+        }}
+        zIndex={50}
+      ></MotionBox>
       {children}
     </>
   )
