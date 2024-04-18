@@ -23,9 +23,9 @@ const styles = {
 
 const colors = {
   brand: {
-    100: "#F4F0E6",
-    200: "#1A1A1A",
-    300: "#FF3B00",
+    100: "#F4F0E6", // Romance
+    200: "#1A1A1A", // Pitch Black
+    300: "#FF3B00", // Pure red
   },
 }
 
