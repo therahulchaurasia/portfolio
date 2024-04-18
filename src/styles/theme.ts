@@ -16,7 +16,7 @@ const styles = {
     body: {
       color: "white",
       bg: "#1A1A1A",
-      // cursor: "none",
+      cursor: "none",
     },
   }),
 }

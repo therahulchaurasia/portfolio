@@ -107,6 +107,7 @@ export default function Home() {
               bg: "brand.300",
               color: "brand.100",
             }}
+            p={10}
           >
             <Icon as={HiArrowSmallDown} boxSize={"10"} />
           </Button>
