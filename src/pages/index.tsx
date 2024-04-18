@@ -1,18 +1,20 @@
+import CustomButton from "@/components/CustomButton"
 import MainLayout from "@/layout/MainLayout"
 import {
   Box,
   Button,
+  Card,
   Container,
   Flex,
   HStack,
   Heading,
   Icon,
+  Image,
   Spacer,
   Stack,
   Text,
 } from "@chakra-ui/react"
 import Head from "next/head"
-import Image from "next/image"
 import Link from "next/link"
 import { CiMenuBurger } from "react-icons/ci"
 import { FaArrowLeft } from "react-icons/fa"
@@ -36,7 +38,7 @@ export default function Home() {
       <MainLayout bg={"brand.100"} color={"brand.300"}>
         <HStack h={28} mb={20}>
           <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
-            RC
+            HY
           </Heading>
           <Spacer />
           <Icon as={RxHamburgerMenu} boxSize={"9"}></Icon>
@@ -91,25 +93,181 @@ export default function Home() {
             EXPLORING BOUNDLESS CREATIVITY, I SOLVE PROBLEMS WITH PASSION,
             FUELED BY DESIGN.
           </Text>
-          <Button
-            border={"3px solid"}
+          <CustomButton
             borderColor={"brand.300"}
             bg={"transparent"}
-            rounded={"full"}
-            h={32}
-            w={32}
-            outline={"none"}
             color={"brand.300"}
-            mx={"auto"}
-            cursor={"none"}
-            transition={"all 0.3s"}
             _hover={{
               bg: "brand.300",
               color: "brand.100",
             }}
           >
             <Icon as={HiArrowSmallDown} boxSize={"10"} />
-          </Button>
+          </CustomButton>
+        </Stack>
+      </MainLayout>
+      <MainLayout bg={"brand.200"} color={"brand.100"} mb={16}>
+        <HStack
+          h={28}
+          mb={20}
+          borderBottom={"1px solid"}
+          borderColor={"brand.100"}
+          fontSize={"lg"}
+          textTransform={"uppercase"}
+        >
+          <Text>02/</Text>
+          <Spacer />
+          <Text>About</Text>
+          <Spacer />
+
+          <Text>/04</Text>
+        </HStack>
+        <Stack spacing={8}>
+          <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
+            HELLO, MY NAME IS T, A CREATIVE ENTHUSIAST DRIVEN BY CURIOSITY,
+            DESIGN, AND PROBLEM-SOLVING.
+          </Text>
+          <Box h={"500px"} w={"300px"} mx={"auto"}>
+            <Image
+              src="https://source.unsplash.com/random/300x500"
+              alt="random placeholder"
+              objectFit={"cover"}
+              maxW={"100%"}
+              maxH={"100%"}
+            />
+          </Box>
+          <CustomButton
+            borderColor={"brand.100"}
+            bg={"transparent"}
+            color={"brand.100"}
+            _hover={{
+              bg: "brand.100",
+              color: "brand.300",
+              borderColor: "brand.100",
+              fontWeight: "extrabold",
+            }}
+          >
+            Learn <br /> More
+          </CustomButton>
+        </Stack>
+      </MainLayout>
+      <MainLayout bg={"brand.200"} color={"brand.100"}>
+        <HStack
+          h={28}
+          mb={20}
+          borderBottom={"1px solid"}
+          borderColor={"brand.100"}
+          fontSize={"lg"}
+          textTransform={"uppercase"}
+        >
+          <Text>03/</Text>
+          <Spacer />
+          <Text>Projects</Text>
+          <Spacer />
+          <Text>/04</Text>
+        </HStack>
+        <Stack spacing={8}>
+          <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
+            HERE ARE A FEW SELECTED PROJECTS THAT DEMONSTRATE MY PASSION FOR
+            CREATING MEMORABLE WEBSITES AND MOBILE APPS.
+          </Text>
+          {/* <Box h={"500px"} w={"300px"} mx={"auto"}>
+            <Image
+              src="https://source.unsplash.com/random/300x500"
+              alt="random placeholder"
+              objectFit={"cover"}
+              maxW={"100%"}
+              maxH={"100%"}
+            />
+          </Box> */}
+          <Stack mx={"auto"} textTransform={"uppercase"}>
+            <Image
+              src="https://source.unsplash.com/random/400x500"
+              alt="random placeholder"
+              objectFit={"cover"}
+              maxW={"100%"}
+              maxH={"100%"}
+              borderRadius={"3xl"}
+              filter={{ base: "none", md: "brightness(70%)" }}
+              transition={"all 0.3s linear"}
+              _hover={{
+                filter: "brightness(100%)",
+              }}
+            />
+            <HStack>
+              <Text>GPA Calculate</Text>
+              <Spacer />
+              <Text>SEO</Text>
+            </HStack>
+            <HStack>
+              <Text>Website Design</Text>
+              <Spacer />
+              <Text>24.10.2023</Text>
+            </HStack>
+          </Stack>
+          <Stack mx={"auto"} textTransform={"uppercase"}>
+            <Image
+              src="https://source.unsplash.com/random/400x500"
+              alt="random placeholder"
+              objectFit={"cover"}
+              maxW={"100%"}
+              maxH={"100%"}
+              borderRadius={"3xl"}
+              filter={{ base: "none", md: "brightness(70%)" }}
+              transition={"all 0.3s linear"}
+              _hover={{
+                filter: "brightness(100%)",
+              }}
+            />
+            <HStack>
+              <Text>GPA Calculate</Text>
+              <Spacer />
+              <Text>SEO</Text>
+            </HStack>
+            <HStack>
+              <Text>Website Design</Text>
+              <Spacer />
+              <Text>24.10.2023</Text>
+            </HStack>
+          </Stack>
+          <Stack mx={"auto"} textTransform={"uppercase"}>
+            <Image
+              src="https://source.unsplash.com/random/400x500"
+              alt="random placeholder"
+              objectFit={"cover"}
+              maxW={"100%"}
+              maxH={"100%"}
+              borderRadius={"3xl"}
+              filter={{ base: "none", md: "brightness(70%)" }}
+              transition={"all 0.3s linear"}
+              _hover={{
+                filter: "brightness(100%)",
+              }}
+            />
+            <HStack>
+              <Text>GPA Calculate</Text>
+              <Spacer />
+              <Text>SEO</Text>
+            </HStack>
+            <HStack>
+              <Text>Website Design</Text>
+              <Spacer />
+              <Text>24.10.2023</Text>
+            </HStack>
+          </Stack>
+          <CustomButton
+            borderColor={"brand.100"}
+            bg={"transparent"}
+            color={"brand.100"}
+            _hover={{
+              bg: "brand.100",
+              color: "brand.300",
+              borderColor: "brand.100",
+              fontWeight: "extrabold",
+            }}
+          >
+            Learn <br /> More
+          </CustomButton>
         </Stack>
       </MainLayout>
     </>

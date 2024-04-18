@@ -53,6 +53,7 @@ export default function App({ Component, pageProps }: AppProps) {
               background: "black",
               clipPath: "polygon(0 50%, 100% 50%, 100% 50%, 0 50%)",
             }}
+            cursor={"none"}
           >
             <CustomMouse>
               <Component {...pageProps} />
@@ -75,8 +76,8 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const mouseMove = (e: any) => {
       setMousePosition({
-        x: e.clientX - 2,
-        y: e.clientY - 2,
+        x: e.clientX - 14,
+        y: e.clientY - 14,
       })
     }
     window.addEventListener("mousemove", mouseMove)
@@ -90,8 +91,8 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
     <>
       <MotionBox
         as={motion.div}
-        h={6}
-        w={6}
+        h={"28px"}
+        w={"28px"}
         bg={"brand.300"}
         position={"fixed"}
         top={0}
@@ -101,6 +102,7 @@ const CustomMouse = ({ children }: { children: React.ReactNode }) => {
           transform: mouseMove,
         }}
         zIndex={50}
+        pointerEvents={"none"}
       ></MotionBox>
       {children}
     </>
