@@ -10,21 +10,29 @@ import {
   Heading,
   Icon,
   Image,
+  Input,
   Spacer,
   Stack,
   Text,
+  Textarea,
 } from "@chakra-ui/react"
 import Head from "next/head"
 import Link from "next/link"
 import { CiMenuBurger } from "react-icons/ci"
 import { FaArrowLeft } from "react-icons/fa"
+import { GiStarShuriken } from "react-icons/gi"
 import { HiArrowSmallDown } from "react-icons/hi2"
 import { IoMenu } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
-// import { Inter } from "next/font/google";
-// import styles from "@/styles/Home.module.css";
+import { MotionBox } from "./_app"
 
-// const inter = Inter({ subsets: ["latin"] });
+const inputStyles = {
+  p: 14,
+  rounded: "full",
+  border: "none",
+  cursor: "none",
+  bg: "rgb(31, 31, 31)",
+}
 
 export default function Home() {
   return (
@@ -35,6 +43,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <MainLayout bg={"brand.100"} color={"brand.300"}>
         <HStack h={28} mb={20}>
           <Heading fontSize={"3xl"} fontWeight={"extrabold"}>
@@ -69,7 +78,7 @@ export default function Home() {
               display={"inline-block"}
               mb={-5}
             >
-              Versatile
+              Full
             </Text>
             <Text
               fontSize={"6xl"}
@@ -78,7 +87,7 @@ export default function Home() {
               mx={"auto"}
               mb={-5}
             >
-              Creative
+              Stack
             </Text>
             <Text
               fontSize={"6xl"}
@@ -86,7 +95,7 @@ export default function Home() {
               fontWeight={"black"}
               mx={"auto"}
             >
-              Visionary
+              Developer
             </Text>
           </Flex>
           <Text textAlign={"center"} mx={"auto"} fontSize={"xl"} mb={16}>
@@ -107,72 +116,74 @@ export default function Home() {
           </CustomButton>
         </Stack>
       </MainLayout>
-      <MainLayout bg={"brand.200"} color={"brand.100"} mb={16}>
-        <HStack
-          h={28}
-          mb={20}
-          borderBottom={"1px solid"}
-          borderColor={"brand.100"}
-          fontSize={"lg"}
-          textTransform={"uppercase"}
-        >
-          <Text>02/</Text>
-          <Spacer />
-          <Text>About</Text>
-          <Spacer />
+      <MainLayout bg={"brand.200"}>
+        <Stack spacing={14}>
+          <Box bg={"brand.200"} color={"brand.100"}>
+            <HStack
+              h={28}
+              mb={20}
+              borderBottom={"1px solid"}
+              borderColor={"brand.100"}
+              fontSize={"lg"}
+              textTransform={"uppercase"}
+            >
+              <Text>02/</Text>
+              <Spacer />
+              <Text>About</Text>
+              <Spacer />
 
-          <Text>/04</Text>
-        </HStack>
-        <Stack spacing={8}>
-          <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
-            HELLO, MY NAME IS T, A CREATIVE ENTHUSIAST DRIVEN BY CURIOSITY,
-            DESIGN, AND PROBLEM-SOLVING.
-          </Text>
-          <Box h={"500px"} w={"300px"} mx={"auto"}>
-            <Image
-              src="https://source.unsplash.com/random/300x500"
-              alt="random placeholder"
-              objectFit={"cover"}
-              maxW={"100%"}
-              maxH={"100%"}
-            />
+              <Text>/04</Text>
+            </HStack>
+            <Stack spacing={8}>
+              <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
+                HELLO, MY NAME IS T, A CREATIVE ENTHUSIAST DRIVEN BY CURIOSITY,
+                DESIGN, AND PROBLEM-SOLVING.
+              </Text>
+              <Box h={"500px"} w={"300px"} mx={"auto"}>
+                <Image
+                  src="https://source.unsplash.com/random/300x500"
+                  alt="random placeholder"
+                  objectFit={"cover"}
+                  maxW={"100%"}
+                  maxH={"100%"}
+                />
+              </Box>
+              <CustomButton
+                borderColor={"brand.100"}
+                bg={"transparent"}
+                color={"brand.100"}
+                _hover={{
+                  bg: "brand.100",
+                  color: "brand.300",
+                  borderColor: "brand.100",
+                  fontWeight: "extrabold",
+                }}
+              >
+                Learn <br /> More
+              </CustomButton>
+            </Stack>
           </Box>
-          <CustomButton
-            borderColor={"brand.100"}
-            bg={"transparent"}
-            color={"brand.100"}
-            _hover={{
-              bg: "brand.100",
-              color: "brand.300",
-              borderColor: "brand.100",
-              fontWeight: "extrabold",
-            }}
-          >
-            Learn <br /> More
-          </CustomButton>
-        </Stack>
-      </MainLayout>
-      <MainLayout bg={"brand.200"} color={"brand.100"}>
-        <HStack
-          h={28}
-          mb={20}
-          borderBottom={"1px solid"}
-          borderColor={"brand.100"}
-          fontSize={"lg"}
-          textTransform={"uppercase"}
-        >
-          <Text>03/</Text>
-          <Spacer />
-          <Text>Projects</Text>
-          <Spacer />
-          <Text>/04</Text>
-        </HStack>
-        <Stack spacing={8}>
-          <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
-            HERE ARE A FEW SELECTED PROJECTS THAT DEMONSTRATE MY PASSION FOR
-            CREATING MEMORABLE WEBSITES AND MOBILE APPS.
-          </Text>
-          {/* <Box h={"500px"} w={"300px"} mx={"auto"}>
+          <Box bg={"brand.200"} color={"brand.100"}>
+            <HStack
+              h={28}
+              mb={20}
+              borderBottom={"1px solid"}
+              borderColor={"brand.100"}
+              fontSize={"lg"}
+              textTransform={"uppercase"}
+            >
+              <Text>03/</Text>
+              <Spacer />
+              <Text>Projects</Text>
+              <Spacer />
+              <Text>/04</Text>
+            </HStack>
+            <Stack spacing={8}>
+              <Text textAlign={"center"} mx={"auto"} fontSize={"xl"}>
+                HERE ARE A FEW SELECTED PROJECTS THAT DEMONSTRATE MY PASSION FOR
+                CREATING MEMORABLE WEBSITES AND MOBILE APPS.
+              </Text>
+              {/* <Box h={"500px"} w={"300px"} mx={"auto"}>
             <Image
               src="https://source.unsplash.com/random/300x500"
               alt="random placeholder"
@@ -181,104 +192,153 @@ export default function Home() {
               maxH={"100%"}
             />
           </Box> */}
-          <Stack mx={"auto"} textTransform={"uppercase"}>
-            <Image
-              src="https://source.unsplash.com/random/400x500"
-              alt="random placeholder"
-              objectFit={"cover"}
-              maxW={"100%"}
-              maxH={"100%"}
-              borderRadius={"3xl"}
-              filter={{ base: "none", md: "brightness(70%)" }}
-              transition={"all 0.3s linear"}
-              _hover={{
-                filter: "brightness(100%)",
-              }}
-            />
-            <HStack>
-              <Text>GPA Calculate</Text>
-              <Spacer />
-              <Text>SEO</Text>
-            </HStack>
-            <HStack>
-              <Text>Website Design</Text>
-              <Spacer />
-              <Text>24.10.2023</Text>
-            </HStack>
-          </Stack>
-          <Stack mx={"auto"} textTransform={"uppercase"}>
-            <Image
-              src="https://source.unsplash.com/random/400x500"
-              alt="random placeholder"
-              objectFit={"cover"}
-              maxW={"100%"}
-              maxH={"100%"}
-              borderRadius={"3xl"}
-              filter={{ base: "none", md: "brightness(70%)" }}
-              transition={"all 0.3s linear"}
-              _hover={{
-                filter: "brightness(100%)",
-              }}
-            />
-            <HStack>
-              <Text>GPA Calculate</Text>
-              <Spacer />
-              <Text>SEO</Text>
-            </HStack>
-            <HStack>
-              <Text>Website Design</Text>
-              <Spacer />
-              <Text>24.10.2023</Text>
-            </HStack>
-          </Stack>
-          <Stack mx={"auto"} textTransform={"uppercase"}>
-            <Image
-              src="https://source.unsplash.com/random/400x500"
-              alt="random placeholder"
-              objectFit={"cover"}
-              maxW={"100%"}
-              maxH={"100%"}
-              borderRadius={"3xl"}
-              filter={{ base: "none", md: "brightness(70%)" }}
-              transition={"all 0.3s linear"}
-              _hover={{
-                filter: "brightness(100%)",
-              }}
-            />
-            <HStack>
-              <Text>GPA Calculate</Text>
-              <Spacer />
-              <Text>SEO</Text>
-            </HStack>
-            <HStack>
-              <Text>Website Design</Text>
-              <Spacer />
-              <Text>24.10.2023</Text>
-            </HStack>
-          </Stack>
-          <CustomButton
-            borderColor={"brand.100"}
-            bg={"transparent"}
+              <Stack mx={"auto"} textTransform={"uppercase"}>
+                <Image
+                  src="https://source.unsplash.com/random/400x500"
+                  alt="random placeholder"
+                  objectFit={"cover"}
+                  maxW={"100%"}
+                  maxH={"100%"}
+                  borderRadius={"3xl"}
+                  filter={{ base: "none", md: "brightness(70%)" }}
+                  transition={"all 0.3s linear"}
+                  _hover={{
+                    filter: "brightness(100%)",
+                  }}
+                />
+                <HStack>
+                  <Text>GPA Calculate</Text>
+                  <Spacer />
+                  <Text>SEO</Text>
+                </HStack>
+                <HStack>
+                  <Text>Website Design</Text>
+                  <Spacer />
+                  <Text>24.10.2023</Text>
+                </HStack>
+              </Stack>
+              <Stack mx={"auto"} textTransform={"uppercase"}>
+                <Image
+                  src="https://source.unsplash.com/random/400x500"
+                  alt="random placeholder"
+                  objectFit={"cover"}
+                  maxW={"100%"}
+                  maxH={"100%"}
+                  borderRadius={"3xl"}
+                  filter={{ base: "none", md: "brightness(70%)" }}
+                  transition={"all 0.3s linear"}
+                  _hover={{
+                    filter: "brightness(100%)",
+                  }}
+                />
+                <HStack>
+                  <Text>GPA Calculate</Text>
+                  <Spacer />
+                  <Text>SEO</Text>
+                </HStack>
+                <HStack>
+                  <Text>Website Design</Text>
+                  <Spacer />
+                  <Text>24.10.2023</Text>
+                </HStack>
+              </Stack>
+              <Stack mx={"auto"} textTransform={"uppercase"}>
+                <Image
+                  src="https://source.unsplash.com/random/400x500"
+                  alt="random placeholder"
+                  objectFit={"cover"}
+                  maxW={"100%"}
+                  maxH={"100%"}
+                  borderRadius={"3xl"}
+                  filter={{ base: "none", md: "brightness(70%)" }}
+                  transition={"all 0.3s linear"}
+                  _hover={{
+                    filter: "brightness(100%)",
+                  }}
+                />
+                <HStack>
+                  <Text>GPA Calculate</Text>
+                  <Spacer />
+                  <Text>SEO</Text>
+                </HStack>
+                <HStack>
+                  <Text>Website Design</Text>
+                  <Spacer />
+                  <Text>24.10.2023</Text>
+                </HStack>
+              </Stack>
+              <CustomButton
+                borderColor={"brand.100"}
+                bg={"transparent"}
+                color={"brand.100"}
+                _hover={{
+                  bg: "brand.100",
+                  color: "brand.300",
+                  borderColor: "brand.100",
+                  fontWeight: "extrabold",
+                }}
+              >
+                Learn <br /> More
+              </CustomButton>
+            </Stack>
+          </Box>
+          <Box
+            as={Flex}
+            bg={"brand.200"}
             color={"brand.100"}
-            _hover={{
-              bg: "brand.100",
-              color: "brand.300",
-              borderColor: "brand.100",
-              fontWeight: "extrabold",
-            }}
+            direction={"column"}
+            gap={12}
           >
-            Learn <br /> More
-          </CustomButton>
+            <Box>
+              <Text>GOT A PROJECT IN MIND ?</Text>
+              <Box>
+                <Heading fontSize={"6xl"} fontWeight={"500"}>
+                  LETS{" "}
+                  {/* <MotionBox
+                display={"inline"}
+                initial={{
+                  opacity: 0,
+                  x: 20,
+                }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{
+                  duration: 1,
+                  ease: "easeInOut",
+                  times: [0, 0.2, 0.5, 0.8, 1],
+                  repeat: "Infinity",
+                  repeatDelay: 1,
+                }}
+              >
+                <GiStarShuriken />
+                <Icon
+                  as={GiStarShuriken}
+                  color={"brand.100"}
+                  boxSize={"50px"}
+                />
+              </MotionBox> */}
+                </Heading>
+                <Heading fontSize={"6xl"} fontWeight={"500"} mt={"-1"}>
+                  CONNECT
+                </Heading>
+              </Box>
+            </Box>
+            <Stack spacing={4}>
+              <Input placeholder="Name" type="text" {...inputStyles} />
+              <Input placeholder="Email" type="email" {...inputStyles} />
+              <Textarea placeholder="Message" size={"xl"} {...inputStyles} />
+              <Button
+                type="submit"
+                fontWeight={"bold"}
+                fontSize={"18px"}
+                {...inputStyles}
+                bg={"brand.100"}
+              >
+                Submit Message
+              </Button>
+            </Stack>
+          </Box>
         </Stack>
       </MainLayout>
     </>
   )
-}
-
-// My test text
-{
-  /* <Text color={"brand.300"}>HELLO THERE! WELCOME MONTSERRAT</Text>
-          <Box as={Link} href={"/test"} color={"white"}>
-            TEST
-          </Box> */
 }

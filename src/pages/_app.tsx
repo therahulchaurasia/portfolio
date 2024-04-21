@@ -26,7 +26,7 @@ const ChakraBox = chakra(motion.div, {
     isValidMotionProp(prop) || shouldForwardProp(prop),
 })
 
-const MotionBox = motion(chakra.div)
+export const MotionBox = motion(chakra.div)
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
