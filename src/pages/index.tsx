@@ -6,6 +6,8 @@ import {
   Card,
   Container,
   Flex,
+  FormControl,
+  FormLabel,
   HStack,
   Heading,
   Icon,
@@ -25,6 +27,11 @@ import { HiArrowSmallDown } from "react-icons/hi2"
 import { IoMenu } from "react-icons/io5"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { MotionBox } from "./_app"
+import { useFormik } from "formik"
+import { object, string } from "yup"
+import axios from "axios"
+import EmailHandler from "./api/send"
+import type { NextApiRequest, NextApiResponse } from "next"
 
 const inputStyles = {
   p: 14,
@@ -33,8 +40,65 @@ const inputStyles = {
   cursor: "none",
   bg: "rgb(31, 31, 31)",
 }
+const emailRegex =
+  /^([A-Z0-9_+-]+\.?)*[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i
 
-export default function Home() {
+const validationSchema = object().shape({
+  name: string()
+    .required("Required")
+    .min(2)
+    .test(
+      "len",
+      "First name must be at least 2 characters",
+      (val) => val.trim().length >= 2
+    )
+    .label("First name"),
+  message: string()
+    .required("Required")
+    .min(2)
+    .test(
+      "len",
+      "First name must be at least 2 characters",
+      (val) => val.trim().length >= 2
+    )
+    .label("First name"),
+  email: string()
+    .email()
+    .matches(emailRegex, "Invalid Email")
+    .required("Required")
+    .label("Email"),
+})
+
+export default function Home(req: NextApiRequest, res: NextApiResponse) {
+  const {
+    handleSubmit,
+    values,
+    handleChange,
+    handleBlur,
+    errors,
+    touched,
+    ...formik
+  } = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+    validationSchema,
+    onSubmit: async () => {
+      sendAMessage()
+    },
+  })
+
+  const sendAMessage = async () => {
+    try {
+      const response = await axios.get('/api/send')
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -322,20 +386,64 @@ export default function Home() {
                 </Heading>
               </Box>
             </Box>
-            <Stack spacing={4}>
-              <Input placeholder="Name" type="text" {...inputStyles} />
-              <Input placeholder="Email" type="email" {...inputStyles} />
-              <Textarea placeholder="Message" size={"xl"} {...inputStyles} />
-              <Button
-                type="submit"
-                fontWeight={"bold"}
-                fontSize={"18px"}
-                {...inputStyles}
-                bg={"brand.100"}
-              >
-                Submit Message
-              </Button>
-            </Stack>
+            <form onSubmit={handleSubmit}>
+              <Stack spacing={4}>
+                <FormControl
+                  isRequired
+                  isInvalid={touched.name && errors.name ? true : false}
+                >
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Name"
+                    type="text"
+                    value={values.name}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    {...inputStyles}
+                  />
+                </FormControl>
+                <FormControl
+                  isRequired
+                  isInvalid={touched.email && errors.email ? true : false}
+                >
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    value={values.email}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    {...inputStyles}
+                  />
+                </FormControl>
+                <FormControl
+                  isRequired
+                  isInvalid={touched.message && errors.message ? true : false}
+                >
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Message"
+                    size={"xl"}
+                    value={values.message}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    {...inputStyles}
+                  />
+                </FormControl>
+                <Button
+                  type="submit"
+                  fontWeight={"bold"}
+                  fontSize={"18px"}
+                  {...inputStyles}
+                  bg={"brand.100"}
+                >
+                  Submit Message
+                </Button>
+              </Stack>
+            </form>
           </Box>
         </Stack>
       </MainLayout>
