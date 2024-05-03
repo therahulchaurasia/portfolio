@@ -1,13 +1,11 @@
-import CustomButton from "@/components/CustomButton"
-import MainLayout from "@/layout/MainLayout"
+import CustomButton from "@/components/util/CustomButton"
+import MainLayout from "@/components/layout/MainLayout"
+import { EmailForm } from "@/types/type"
 import {
   Box,
   Button,
-  Card,
-  Container,
   Flex,
   FormControl,
-  FormLabel,
   HStack,
   Heading,
   Icon,
@@ -17,19 +15,15 @@ import {
   Stack,
   Text,
   Textarea,
+  useToast,
 } from "@chakra-ui/react"
-import Head from "next/head"
-import Link from "next/link"
-import { CiMenuBurger } from "react-icons/ci"
-import { FaArrowLeft } from "react-icons/fa"
-import { GiStarShuriken } from "react-icons/gi"
-import { HiArrowSmallDown } from "react-icons/hi2"
-import { IoMenu } from "react-icons/io5"
-import { RxHamburgerMenu } from "react-icons/rx"
-import { MotionBox } from "./_app"
-import { useFormik } from "formik"
-import { object, string } from "yup"
 import axios from "axios"
+import { useFormik } from "formik"
+import Head from "next/head"
+import { HiArrowSmallDown } from "react-icons/hi2"
+import { RxHamburgerMenu } from "react-icons/rx"
+import { object, string } from "yup"
+import CustomToast from "@/components/util/CustomToast"
 
 const inputStyles = {
   p: 14,
@@ -42,6 +36,7 @@ const emailRegex =
   /^([A-Z0-9_+-]+\.?)*[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i
 
 export default function Home() {
+  const toast = useToast()
   const validationSchema = object().shape({
     name: string()
       .required("Required")
@@ -86,16 +81,30 @@ export default function Home() {
     },
     validationSchema,
     onSubmit: async (values) => {
-      sendEmail()
+      sendEmail(values)
     },
   })
 
-  const sendEmail = async () => {
+  const sendEmail = async (values: EmailForm) => {
     try {
-      const response = await axios.get("/api/send")
-      console.log(response)
+      const response = await axios.post("/api/send", { ...values })
+      if (response.status === 200) {
+        toast({
+          position: "top",
+          render: () => (
+            <CustomToast
+              message={"I'll get back to you within 2 business days."}
+              severity="success"
+            />
+          ),
+        })
+      }
       resetForm()
-    } catch (error) {
+    } catch (error: any) {
+      toast({
+        position: "top",
+        render: () => <CustomToast message={error.message} severity="error" />,
+      })
       console.log(error)
     }
   }
